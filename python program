@@ -1,0 +1,40 @@
+import pickle
+
+def dump(data, filename):
+    # Open the file in binary-write mode and serialize the data
+    with open(filename, 'wb') as f:
+        pickle.dump(data, f)
+
+def load(filename):
+    # Open the file in binary-read mode and deserialize the data
+    with open(filename, 'rb') as f:
+        return pickle.load(f)
+
+def main():
+    records = [
+        ['John', '501', 20, 92.5],
+        ['Kohli', '502', 21, 95.5],
+        ['Ganga', '503', 20, 90.5],
+        ['Gayathri', '504', 20, 82.5],
+        ['Krishna', '505', 20, 96.5]
+    ]
+    
+    # Specify the filename for storing the records
+    filename = 'students.dat'
+    
+    # Dump the records to a binary file
+    dump(records, filename)
+    
+    print("Records have been saved!")
+    
+    # Load the records back from the binary file
+    loaded_records = load(filename)
+    
+    # Print the loaded records
+    for record in loaded_records:
+        print(record)
+
+    print("Bye")
+
+if __name__ == "__main__":
+    main()
